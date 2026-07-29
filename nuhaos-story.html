@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUHAOS — The AI-Native School Operating System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F6F2E8;
+            --cream-deep: #EFE9DA;
+            --ink: #23281D;
+            --ink-soft: #4B5343;
+            --forest: #2F3B27;
+            --forest-deep: #1D251A;
+            --forest-mid: #46583F;
+            --walnut: #7A5B3A;
+            --walnut-soft: #A9835C;
+            --gold: #B9925A;
+            --gold-bright: #D4AE73;
+            --line: #DED5BE;
+            --zeymal: #9C7A4A;
+            --educian: #4F6B80;
+            --radius: 14px;
+            --maxw: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--cream);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            margin: 0;
+            color: var(--forest-deep);
+        }
+
+        .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--walnut);
+            font-weight: 500;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        ::selection {
+            background: var(--gold-bright);
+            color: var(--forest-deep);
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ---------- layout shell (matches CI page) ---------- */
+        nav.rail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 230px;
+            padding: 2.2rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 50;
+        }
+
+        nav.rail .brand {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 19px;
+            color: var(--forest-deep);
+        }
+
+        nav.rail .brand span {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 400;
+            font-size: 10.5px;
+            letter-spacing: .1em;
+            color: var(--walnut);
+            margin-top: 3px;
+            text-transform: uppercase;
+        }
+
+        nav.rail ul {
+            list-style: none;
+            margin: 2.4rem 0 0;
+            padding: 0;
+        }
+
+        nav.rail li {
+            margin-bottom: 0.35rem;
+        }
+
+        nav.rail a.navlink {
+            display: flex;
+            align-items: baseline;
+            gap: 0.55rem;
+            text-decoration: none;
+            color: var(--ink-soft);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 0.45rem 0.2rem;
+            border-radius: 8px;
+            transition: color .2s ease;
+        }
+
+        nav.rail a.navlink .n {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            color: var(--line);
+        }
+
+        nav.rail a.navlink.active {
+            color: var(--forest-deep);
+        }
+
+        nav.rail a.navlink.active .n {
+            color: var(--gold);
+        }
+
+        nav.rail .foot-note {
+            font-size: 11px;
+            color: #9CA28C;
+            line-height: 1.5;
+        }
+
+        nav.rail .backlink {
+            display: inline-block;
+            margin-top: 1.4rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--walnut);
+            text-decoration: none;
+            border-top: 1px solid var(--line);
+            padding-top: 1rem;
+        }
+
+        main {
+            margin-left: 230px;
+            width: calc(100% - 230px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        section {
+            position: relative;
+            padding: 5.4rem 0;
+        }
+
+        section+section {
+            border-top: 1px solid var(--line);
+        }
+
+        .kicker-row {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .kicker-row .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        h2.section-title {
+            font-size: clamp(28px, 3.4vw, 40px);
+            margin-bottom: 1rem;
+            max-width: 820px;
+        }
+
+        p.lede {
+            font-size: 17.5px;
+            color: var(--ink-soft);
+            max-width: 700px;
+            margin-bottom: 0;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 0 3.5rem;
+            border-top: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 5.8vw, 68px);
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            margin: 1.1rem 0 1.4rem;
+            max-width: 880px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--walnut);
+            font-weight: 500;
+        }
+
+        .hero .sub {
+            font-size: 18.5px;
+            color: var(--ink-soft);
+            max-width: 640px;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero .byline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            letter-spacing: .06em;
+            color: var(--walnut);
+            text-transform: uppercase;
+        }
+
+        /* ---------- timeline / era rows ---------- */
+        .era-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 1.6rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .era-row:first-child {
+            border-top: none;
+        }
+
+        .era-row .when {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--forest-deep);
+        }
+
+        .era-row .body p {
+            margin: 0 0 0.5rem;
+            font-size: 14.5px;
+            color: var(--ink-soft);
+        }
+
+        .era-row .body strong {
+            color: var(--ink);
+        }
+
+        /* ---------- ecosystem chips ---------- */
+        .chip-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 2rem;
+        }
+
+        .chip {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            padding: 0.55rem 1.1rem;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--forest-deep);
+        }
+
+        /* ---------- pain point grid ---------- */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.9rem;
+            margin-top: 2.2rem;
+        }
+
+        .pain {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 1.1rem 0.9rem;
+            text-align: center;
+            font-size: 13px;
+            color: var(--ink-soft);
+        }
+
+        .pain .x {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 0.4rem;
+            color: var(--walnut-soft);
+        }
+
+        /* ---------- callout stat row ---------- */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2.2rem;
+        }
+
+        .stat-box {
+            background: var(--cream-deep);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1.2rem 1.3rem;
+        }
+
+        .stat-box .big {
+            font-family: 'Fraunces', serif;
+            font-size: 26px;
+            color: var(--forest-deep);
+            font-weight: 600;
+        }
+
+        .stat-box .label {
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            margin-top: 0.2rem;
+        }
+
+        /* ---------- feature panels ---------- */
+        .feat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.1rem;
+            margin-top: 2.4rem;
+        }
+
+        .feat {
+            background: var(--forest);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 1.4rem 1.4rem;
+        }
+
+        .feat h5 {
+            font-family: 'Fraunces', serif;
+            font-size: 16.5px;
+            font-weight: 600;
+            color: var(--gold-bright);
+            margin-bottom: 0.5rem;
+        }
+
+        .feat p {
+            font-size: 12.8px;
+            color: #D6DCCC;
+            margin: 0;
+        }
+
+        /* ---------- privacy list ---------- */
+        .privacy-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .plist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 0.9rem 1.05rem;
+            font-size: 13.5px;
+            color: var(--ink-soft);
+        }
+
+        .plist-item .dot2 {
+            flex: none;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            margin-top: 6px;
+        }
+
+        /* ---------- comparison table ---------- */
+        .tbl-wrap {
+            overflow-x: auto;
+            margin-top: 2.2rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+        }
+
+        table.cmp {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            min-width: 720px;
+        }
+
+        table.cmp thead th {
+            background: var(--forest-deep);
+            color: #fff;
+            text-align: left;
+            padding: 0.8rem 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        table.cmp thead th:first-child {
+            color: #B7C0AA;
+        }
+
+        table.cmp tbody td {
+            padding: 0.8rem 1.1rem;
+            border-top: 1px solid var(--line);
+            vertical-align: top;
+        }
+
+        table.cmp tbody tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.015);
+        }
+
+        table.cmp td:first-child {
+            font-weight: 600;
+            color: var(--forest-deep);
+            white-space: nowrap;
+        }
+
+        table.cmp td.nuha-cell {
+            color: var(--forest-mid);
+            font-style: italic;
+            font-weight: 500;
+            background: rgba(70, 88, 63, 0.06);
+        }
+
+        table.cmp td.yes {
+            color: var(--forest-mid);
+            font-weight: 600;
+        }
+
+        table.cmp td.no {
+            color: #B08672;
+        }
+
+        /* ---------- pricing ---------- */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.1rem;
+            margin-top: 2.2rem;
+        }
+
+        .price-card {
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            background: #fff;
+            padding: 1.6rem 1.5rem;
+        }
+
+        .price-card.hi {
+            background: var(--forest);
+            border-color: var(--forest);
+        }
+
+        .price-card .tier {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: var(--walnut);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-card.hi .tier {
+            color: var(--gold-bright);
+        }
+
+        .price-card h4 {
+            font-size: 19px;
+            color: var(--forest-deep);
+            margin-bottom: 0.4rem;
+        }
+
+        .price-card.hi h4 {
+            color: #fff;
+        }
+
+        .price-card p {
+            font-size: 13px;
+            color: var(--ink-soft);
+            margin: 0;
+        }
+
+        .price-card.hi p {
+            color: #D6DCCC;
+        }
+
+        /* ---------- vision closing ---------- */
+        .vision-block {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 2rem;
+        }
+
+        .vision-line {
+            font-family: 'Fraunces', serif;
+            font-size: 19px;
+            color: var(--forest-deep);
+            font-weight: 500;
+            padding: 1rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .vision-line:nth-child(-n+2) {
+            border-top: none;
+        }
+
+        .cta-final {
+            margin-top: 3rem;
+            background: var(--forest);
+            border-radius: 20px;
+            padding: 3rem 3rem;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            color: #fff;
+            font-size: clamp(26px, 3vw, 36px);
+        }
+
+        .cta-final .tag2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--gold-bright);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-top: 0.8rem;
+            display: block;
+        }
+
+        .cta-final .url {
+            margin-top: 1.6rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: #D6DCCC;
+        }
+
+        footer {
+            padding: 3rem 0 4rem;
+        }
+
+        footer p {
+            font-size: 12px;
+            color: #9CA28C;
+            max-width: 520px;
+        }
+
+        /* ---------- responsive ---------- */
+        @media (max-width:980px) {
+            nav.rail {
+                width: 100%;
+                height: auto;
+                position: sticky;
+                top: 0;
+                padding: 0.9rem 1.1rem;
+                background: var(--cream);
+                border-bottom: 1px solid var(--line);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.6rem;
+                z-index: 100;
+            }
+
+            nav.rail>div:last-child {
+                display: none;
+            }
+
+            nav.rail ul {
+                display: flex;
+                flex-direction: row;
+                gap: 0.3rem;
+                margin: 0;
+                padding: 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            nav.rail ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav.rail li {
+                margin: 0;
+                flex: none;
+            }
+
+            nav.rail a.navlink {
+                white-space: nowrap;
+                padding: 0.35rem 0.7rem;
+                background: var(--cream-deep);
+                border-radius: 20px;
+                font-size: 12.5px;
+            }
+
+            nav.rail a.navlink .n {
+                display: none;
+            }
+
+            nav.rail a.navlink.active {
+                background: var(--forest);
+                color: #fff;
+            }
+
+            section[id] {
+                scroll-margin-top: 64px;
+            }
+
+            main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .wrap {
+                padding: 0 1.3rem;
+            }
+
+            .pain-grid,
+            .feat-grid,
+            .privacy-list,
+            .stat-row,
+            .price-grid,
+            .vision-block {
+                grid-template-columns: 1fr !important;
+            }
+
+            .era-row {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .cta-final {
+                padding: 2.2rem 1.5rem;
+            }
+        }
+
+        #bigname {
+
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="rail">
+        <div>
+            <div class="brand">NUHAOS<span>Product Story</span></div>
+            <ul id="navlist">
+                <li><a class="navlink" href="#hero"><span class="n">00</span>Intro</a></li>
+                <li><a class="navlink" href="#ecosystem"><span class="n">01</span>The Modern School</a></li>
+                <li><a class="navlink" href="#reality"><span class="n">02</span>What We See</a></li>
+                <li><a class="navlink" href="#evolution"><span class="n">03</span>ERP Evolution</a></li>
+                <li><a class="navlink" href="#nuhaos"><span class="n">04</span>NUHAOS</a></li>
+                <li><a class="navlink" href="#growth"><span class="n">05</span>Growth, Not Rank</a></li>
+                <li><a class="navlink" href="#privacy"><span class="n">06</span>Privacy by Design</a></li>
+                <li><a class="navlink" href="#compare"><span class="n">07</span>Comparison</a></li>
+                <li><a class="navlink" href="#pricing"><span class="n">08</span>Pricing</a></li>
+                <li><a class="navlink" href="#vision"><span class="n">09</span>Vision</a></li>
+            </ul>
+        </div>
+        <div class="foot-note">
+            Product story — for pitch &amp; onboarding use.
+            <a class="backlink" href="index.html">← Back to Competitive Intel</a>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ============ HERO ============ -->
+        <section class="hero wrap" id="hero">
+            <div class="eyebrow">NUHAOS · Product Story</div>
+            <h1>Building <em>AI-native schools</em><br>for the next generation.</h1>
+            <p class="sub">Not another ERP. An intelligent operating system that connects administration,
+                teachers, parents, students, and AI into one working whole.</p>
+            <div class="byline"><span id="bigname">Presented by Abid Ali Mir — Lead Content Strategist &amp; Growth
+                    Manager</span></div>
+        </section>
+
+        <!-- ============ THE EDUCATION REVOLUTION ============ -->
+        <section class="wrap" id="revolution">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">The Education Revolution</span>
+            </div>
+            <h2 class="section-title">Every industry has had its moment. Education is having its now.</h2>
+            <div style="margin-top:2rem;">
+                <div class="era-row">
+                    <div class="when">1980s–90s</div>
+                    <div class="body">
+                        <p>Technology transformed industries across the world. <strong>Manufacturing evolved.
+                                Banking evolved. Healthcare evolved.</strong></p>
+                    </div>
+                </div>
+                <div class="era-row">
+                    <div class="when">Today</div>
+                    <div class="body">
+                        <p>Education is entering its biggest transformation yet — driven by
+                            <strong>artificial intelligence.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ THE MODERN SCHOOL ============ -->
+        <section class="wrap" id="ecosystem">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 01</span>
+            </div>
+            <h2 class="section-title">A school is no longer just classrooms. It's an ecosystem.</h2>
+            <p class="lede">Managing each of these pieces separately is exactly where complexity comes from.</p>
+            <div class="chip-cloud">
+                <div class="chip">Administration</div>
+                <div class="chip">Academics</div>
+                <div class="chip">Finance</div>
+                <div class="chip">Human Resources</div>
+                <div class="chip">Parent Communication</div>
+                <div class="chip">Student Wellbeing</div>
+                <div class="chip">Transport</div>
+                <div class="chip">Compliance</div>
+                <div class="chip">Admissions &amp; Marketing</div>
+            </div>
+
+            <h3 style="font-size:19px; margin-top:3rem;">The Kashmir school landscape</h3>
+            <p class="lede">Approximately 5,455 schools, spanning three broad categories — each with different
+                operational challenges.</p>
+            <div class="stat-row">
+                <div class="stat-box">
+                    <div class="big">Elite</div>
+                    <div class="label">&gt;2,000 students</div>
+                </div>
+                <div class="stat-box">
+                    <div class="big">Large</div>
+                    <div class="label">800–2,000 students</div>
+                </div>
+                <div class="stat-box">
+                    <div class="big">Medium</div>
+                    <div class="label">&lt;800 students</div>
+                </div>
+            </div>
+            <div class="fullwidth-note"
+                style="margin-top:1.2rem; border-radius:var(--radius); background:var(--cream-deep); border:1px solid var(--line); padding:1rem 1.3rem; font-size:13px; color:var(--ink-soft);">
+                <strong>Note:</strong> Figures are directional. Replace with verified data before any public-facing use.
+            </div>
+        </section>
+
+        <!-- ============ WHAT WE SEE / HIDDEN COST ============ -->
+        <section class="wrap" id="reality">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 02</span>
+            </div>
+            <h2 class="section-title">Even after buying an ERP, schools still run on paper.</h2>
+            <p class="lede">What we consistently see during school visits, regardless of what software has already
+                been purchased:</p>
+            <div class="pain-grid">
+                <div class="pain"><span class="x">✕</span>Registers</div>
+                <div class="pain"><span class="x">✕</span>Excel Sheets</div>
+                <div class="pain"><span class="x">✕</span>Paper Files</div>
+                <div class="pain"><span class="x">✕</span>WhatsApp Groups</div>
+                <div class="pain"><span class="x">✕</span>Manual Approvals</div>
+            </div>
+
+            <h3 style="font-size:19px; margin-top:3rem;">The hidden cost</h3>
+            <p class="lede">Technology exists in these schools — but productivity doesn't improve enough, because of:
+            </p>
+            <div class="privacy-list" style="margin-top:1.4rem;">
+                <div class="plist-item">
+                    <div class="dot2"></div>Duplicate work across systems
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>Poor governance and oversight
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>Slow approvals
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>Manual compliance tracking
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>Fragmented communication
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>Limited data for decision-making
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ERP EVOLUTION ============ -->
+        <section class="wrap" id="evolution">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 03</span>
+            </div>
+            <h2 class="section-title">Two versions of ERP already happened. Neither asked the right question.</h2>
+            <div style="margin-top:2rem;">
+                <div class="era-row">
+                    <div class="when">Version 1<br><span
+                            style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--walnut); text-transform:uppercase;">~2007
+                            · Desktop ERP</span></div>
+                    <div class="body">
+                        <p>Schools adopted desktop software. It helped administrators — but
+                            <strong>students stayed disconnected, parents stayed disconnected, and teachers saw
+                                little benefit.</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="era-row">
+                    <div class="when">Version 2<br><span
+                            style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--walnut); text-transform:uppercase;">Cloud
+                            ERP</span></div>
+                    <div class="body">
+                        <p>Cloud made attendance, fees, homework, timetables, and results accessible everywhere.
+                            A real improvement — but most systems still only answer one question:
+                            <strong>"How do we digitize administration?"</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="era-row">
+                    <div class="when">The Next Question</div>
+                    <div class="body">
+                        <p>Schools today need answers to bigger questions: <strong>How do we improve teaching?
+                                How do we improve learning? How do we prepare children for AI? How do we reduce
+                                teachers' workload? How do we engage parents?</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ WELCOME TO NUHAOS ============ -->
+        <section class="wrap" id="nuhaos">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 04</span>
+            </div>
+            <h2 class="section-title">Welcome to NUHAOS — the AI-native school operating system.</h2>
+            <p class="lede">Not another ERP. An intelligent operating system for schools.</p>
+
+            <h3 style="font-size:19px; margin-top:2.6rem;">Why we call it an operating system</h3>
+            <div class="duo" style="display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:1.4rem;">
+                <div class="panel"
+                    style="border-radius:var(--radius); padding:1.5rem 1.6rem; border:1px solid var(--line); background:#fff;">
+                    <h4
+                        style="font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--walnut); font-family:'JetBrains Mono',monospace; font-weight:500; margin-bottom:0.8rem;">
+                        Traditional ERP</h4>
+                    <p style="font-size:14px; color:var(--ink-soft); margin:0;">Stores information.</p>
+                </div>
+                <div class="panel dark"
+                    style="border-radius:var(--radius); padding:1.5rem 1.6rem; background:var(--forest); color:#fff;">
+                    <h4
+                        style="font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-bright); font-family:'JetBrains Mono',monospace; font-weight:500; margin-bottom:0.8rem;">
+                        NUHAOS</h4>
+                    <p style="font-size:14px; color:#D6DCCC; margin:0;">Connects people, workflows, and intelligence —
+                        administration, teachers, parents, students, and AI, all working together.</p>
+                </div>
+            </div>
+
+            <h3 style="font-size:19px; margin-top:3rem;">AI that actually helps</h3>
+            <p class="lede">Instead of adding more work, NUHAOS helps teachers do the work they already have — faster.
+            </p>
+            <div class="feat-grid">
+                <div class="feat">
+                    <h5>AI Lesson Planning</h5>
+                    <p>Draft structure and materials from what's already
+                        being taught, ready for a teacher's review.</p>
+                </div>
+                <div class="feat">
+                    <h5>AI Circular Drafting</h5>
+                    <p>Turn a rough note into a clear, ready-to-send
+                        school circular.</p>
+                </div>
+                <div class="feat">
+                    <h5>AI Parent Communication</h5>
+                    <p>Warm, plain-language updates drafted from
+                        objective classroom signals.</p>
+                </div>
+                <div class="feat">
+                    <h5>AI Academic Insights</h5>
+                    <p>Surface patterns in learning and engagement without
+                        turning a child into a score.</p>
+                </div>
+                <div class="feat">
+                    <h5>AI Administrative Assistance</h5>
+                    <p>Handle the repetitive admin load so staff
+                        time goes back to people, not paperwork.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GROWTH, NOT RANK ============ -->
+        <section class="wrap" id="growth">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 05</span>
+            </div>
+            <h2 class="section-title">Schools should measure more than marks.</h2>
+            <p class="lede">The Child Growth Timeline tracks a complete picture of every child's journey:</p>
+            <div class="chip-cloud">
+                <div class="chip">Academic Growth</div>
+                <div class="chip">Attendance</div>
+                <div class="chip">Participation</div>
+                <div class="chip">Confidence</div>
+                <div class="chip">Behaviour</div>
+                <div class="chip">Creativity</div>
+                <div class="chip">Reading Progress</div>
+                <div class="chip">Learning Milestones</div>
+            </div>
+
+            <h3 style="font-size:19px; margin-top:3rem;">Measuring teaching through student growth</h3>
+            <div class="duo" style="display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin-top:1.4rem;">
+                <div class="panel"
+                    style="border-radius:var(--radius); padding:1.5rem 1.6rem; border:1px solid var(--line); background:#fff;">
+                    <h4
+                        style="font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--walnut); font-family:'JetBrains Mono',monospace; font-weight:500; margin-bottom:0.8rem;">
+                        Don't Ask</h4>
+                    <p style="font-size:14px; color:var(--ink-soft); margin:0;">"Is the teacher good?"</p>
+                </div>
+                <div class="panel dark"
+                    style="border-radius:var(--radius); padding:1.5rem 1.6rem; background:var(--forest); color:#fff;">
+                    <h4
+                        style="font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-bright); font-family:'JetBrains Mono',monospace; font-weight:500; margin-bottom:0.8rem;">
+                        Ask Instead</h4>
+                    <p style="font-size:14px; color:#D6DCCC; margin:0;">"Are students growing?" — measured through
+                        learning improvement, engagement, parent feedback, attendance trends, classroom observations,
+                        and AI recommendations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PRIVACY BY DESIGN ============ -->
+        <section class="wrap" id="privacy">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 06</span>
+            </div>
+            <h2 class="section-title">Children deserve privacy.</h2>
+            <p class="lede">NUHAOS is designed with a DPDP-first approach, from the infrastructure up.</p>
+            <div class="privacy-list">
+                <div class="plist-item">
+                    <div class="dot2"></div>Secure cloud infrastructure
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>Data protection by default
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>Role-based access control
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>Verified bus tracking
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>No unnecessary surveillance
+                </div>
+                <div class="plist-item">
+                    <div class="dot2"></div>Secure links instead of invasive tracking
+                </div>
+            </div>
+
+            <h3 style="font-size:19px; margin-top:3rem;">Why cloud wins</h3>
+            <div class="chip-cloud">
+                <div class="chip">No installation</div>
+                <div class="chip">No risk of losing data</div>
+                <div class="chip">No CDs</div>
+                <div class="chip">Automatic updates</div>
+                <div class="chip">Works anywhere</div>
+                <div class="chip">Secure backups</div>
+                <div class="chip">Lower maintenance</div>
+            </div>
+            <p class="lede" style="margin-top:1.4rem;">Accessible on laptop, tablet, phone, or browser — no
+                installation required.</p>
+        </section>
+
+        <!-- ============ COMPARISON ============ -->
+        <section class="wrap" id="compare">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 07</span>
+            </div>
+            <h2 class="section-title">Where NUHAOS stands against the field.</h2>
+            <div class="tbl-wrap">
+                <table class="cmp">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Zeymall</th>
+                            <th>Educian</th>
+                            <th>NUHAOS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Desktop</td>
+                            <td class="yes">✓</td>
+                            <td class="no">✕</td>
+                            <td class="no">✕</td>
+                        </tr>
+                        <tr>
+                            <td>Cloud ERP</td>
+                            <td>Limited</td>
+                            <td class="yes">✓</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                        <tr>
+                            <td>AI Native</td>
+                            <td class="no">✕</td>
+                            <td class="no">✕</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Web App</td>
+                            <td class="no">✕</td>
+                            <td class="yes">✓</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile Friendly</td>
+                            <td>Limited</td>
+                            <td class="yes">✓</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Parent Portal</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                        <tr>
+                            <td>Teacher Portal</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                        <tr>
+                            <td>DPDP-first Design</td>
+                            <td class="no">✕</td>
+                            <td>Partial</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                        <tr>
+                            <td>AI Copilot</td>
+                            <td class="no">✕</td>
+                            <td class="no">✕</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                        <tr>
+                            <td>QR Gate Pass</td>
+                            <td class="no">✕</td>
+                            <td>Limited</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                        <tr>
+                            <td>UPI QR Payments</td>
+                            <td class="no">✕</td>
+                            <td>Limited</td>
+                            <td class="nuha-cell">✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ============ PRICING ============ -->
+        <section class="wrap" id="pricing">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 08</span>
+            </div>
+            <h2 class="section-title">Our pricing philosophy.</h2>
+            <p class="lede">Most software charges schools before they experience any value. NUHAOS believes
+                differently — schools pay for innovation, not basic digitization.</p>
+            <div class="price-grid">
+                <div class="price-card">
+                    <div class="tier">Core Platform</div>
+                    <h4>Free</h4>
+                    <p>The full operating system for running a school — attendance, fees, communication,
+                        transport, compliance.</p>
+                </div>
+                <div class="price-card hi">
+                    <div class="tier">Advanced AI</div>
+                    <h4>Pro</h4>
+                    <p>AI lesson planning, circular drafting, parent communication, and academic insights layered
+                        on top of the free core.</p>
+                </div>
+                <div class="price-card">
+                    <div class="tier">Enterprise Transformation</div>
+                    <h4>Elite</h4>
+                    <p>Full-scale rollout and white-labeling for large school groups and chains.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ VISION ============ -->
+        <section class="wrap" id="vision">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 09</span>
+            </div>
+            <h2 class="section-title">Our vision.</h2>
+            <div class="vision-block">
+                <div class="vision-line">Technology should never replace teachers.</div>
+                <div class="vision-line">It should empower them.</div>
+                <div class="vision-line">Parents should feel connected.</div>
+                <div class="vision-line">Students should feel understood.</div>
+                <div class="vision-line">Schools should spend less time managing…</div>
+                <div class="vision-line">…and more time educating.</div>
+            </div>
+
+            <div class="cta-final">
+                <h2>NUHAOS</h2>
+                <span class="tag2">The AI-Native Operating System for Schools</span>
+                <div class="url">www.nuhaos.com</div>
+            </div>
+        </section>
+
+        <footer class="wrap">
+            <p>Adapted from the NUHAOS product presentation, July 2026. School-count figures are directional —
+                verify before any public or investor-facing use.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        const sections = document.querySelectorAll('main section[id]');
+        const links = document.querySelectorAll('.navlink');
+        const byId = id => document.querySelector('.navlink[href="#' + id + '"]');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    links.forEach(l => l.classList.remove('active'));
+                    const link = byId(entry.target.id);
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+        sections.forEach(s => observer.observe(s));
+    </script>
+
+</body>
+
+</html>

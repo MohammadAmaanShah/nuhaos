@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUHA vs. the Market — Competitive Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F6F2E8;
+            --cream-deep: #EFE9DA;
+            --ink: #23281D;
+            --ink-soft: #4B5343;
+            --forest: #2F3B27;
+            --forest-deep: #1D251A;
+            --forest-mid: #46583F;
+            --walnut: #7A5B3A;
+            --walnut-soft: #A9835C;
+            --gold: #B9925A;
+            --gold-bright: #D4AE73;
+            --line: #DED5BE;
+            --zeymal: #9C7A4A;
+            --educian: #4F6B80;
+            --teachmint: #B0562A;
+            --nuha: #46583F;
+            --radius: 14px;
+            --maxw: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--cream);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            margin: 0;
+            color: var(--forest-deep);
+        }
+
+        .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--walnut);
+            font-weight: 500;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        ::selection {
+            background: var(--gold-bright);
+            color: var(--forest-deep);
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ---------- lattice signature pattern (khatamband nod) ---------- */
+        .lattice-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .lattice-bg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ---------- layout shell ---------- */
+        .shell {
+            display: flex;
+        }
+
+        nav.rail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 230px;
+            padding: 2.2rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 50;
+            background: transparent;
+        }
+
+        nav.rail .brand {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 19px;
+            color: var(--forest-deep);
+        }
+
+        nav.rail .brand span {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 400;
+            font-size: 10.5px;
+            letter-spacing: .1em;
+            color: var(--walnut);
+            margin-top: 3px;
+            text-transform: uppercase;
+        }
+
+        nav.rail ul {
+            list-style: none;
+            margin: 2.4rem 0 0;
+            padding: 0;
+        }
+
+        nav.rail li {
+            margin-bottom: 0.35rem;
+        }
+
+        nav.rail a.navlink {
+            display: flex;
+            align-items: baseline;
+            gap: 0.55rem;
+            text-decoration: none;
+            color: var(--ink-soft);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 0.45rem 0.2rem;
+            border-radius: 8px;
+            transition: color .2s ease;
+        }
+
+        nav.rail a.navlink .n {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            color: var(--line);
+        }
+
+        nav.rail a.navlink.active {
+            color: var(--forest-deep);
+        }
+
+        nav.rail a.navlink.active .n {
+            color: var(--gold);
+        }
+
+        nav.rail .foot-note {
+            font-size: 11px;
+            color: #9CA28C;
+            line-height: 1.5;
+        }
+
+        nav.rail .storylink {
+            display: inline-block;
+            margin-top: 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--forest-deep);
+            font-weight: 600;
+            text-decoration: none;
+            background: var(--cream-deep);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 0.55rem 0.7rem;
+        }
+
+        main {
+            margin-left: 230px;
+            width: calc(100% - 230px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        section {
+            position: relative;
+            padding: 5.4rem 0;
+        }
+
+        section+section {
+            border-top: 1px solid var(--line);
+        }
+
+        .kicker-row {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .kicker-row .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        h2.section-title {
+            font-size: clamp(28px, 3.4vw, 40px);
+            margin-bottom: 1rem;
+            max-width: 820px;
+        }
+
+        p.lede {
+            font-size: 17.5px;
+            color: var(--ink-soft);
+            max-width: 700px;
+            margin-bottom: 0;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 0 3.5rem;
+            overflow: hidden;
+            border-top: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(44px, 6.2vw, 74px);
+            line-height: 1.03;
+            letter-spacing: -0.01em;
+            margin: 1.1rem 0 1.4rem;
+            max-width: 920px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--walnut);
+            font-weight: 500;
+        }
+
+        .hero .sub {
+            font-size: 18.5px;
+            color: var(--ink-soft);
+            max-width: 640px;
+            margin-bottom: 2rem;
+        }
+
+        .hero .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.2rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: var(--forest);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 14.5px;
+            text-decoration: none;
+            padding: 0.85rem 1.4rem;
+            border-radius: 999px;
+            border: 1px solid var(--forest);
+            transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+        }
+
+        .btn-primary:hover {
+            background: var(--forest-deep);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(29, 37, 26, 0.18);
+        }
+
+        .btn-primary .arrow {
+            font-family: 'JetBrains Mono', monospace;
+            transition: transform .18s ease;
+        }
+
+        .btn-primary:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--forest-deep);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 12.5px;
+            text-decoration: none;
+            padding: 0.8rem 1.1rem;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            transition: border-color .18s ease, color .18s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--walnut);
+            color: var(--walnut);
+        }
+
+        .hero .meta-row {
+            display: flex;
+            gap: 2.2rem;
+            flex-wrap: wrap;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            color: var(--walnut);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            margin-bottom: 3rem;
+        }
+
+        .hero .meta-row div span {
+            display: block;
+            color: #9CA28C;
+            font-size: 10px;
+            margin-bottom: 2px;
+        }
+
+        .quickgrid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .qcard {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1.15rem 1.1rem;
+        }
+
+        .qcard.nuha {
+            background: var(--forest);
+            border-color: var(--forest);
+        }
+
+        .qcard .qdot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            margin-bottom: 0.7rem;
+        }
+
+        .qcard h4 {
+            font-size: 15px;
+            color: var(--forest-deep);
+            margin-bottom: 0.25rem;
+        }
+
+        .qcard.nuha h4 {
+            color: #fff;
+        }
+
+        .qcard p {
+            font-size: 12px;
+            margin: 0;
+            color: var(--ink-soft);
+            line-height: 1.45;
+        }
+
+        .qcard.nuha p {
+            color: #CBD3C1;
+        }
+
+        .qcard .stat {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--walnut);
+            margin-top: 0.6rem;
+        }
+
+        .qcard.nuha .stat {
+            color: var(--gold-bright);
+        }
+
+        /* ---------- EXEC SUMMARY ---------- */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3rem;
+            margin-top: 2.4rem;
+            align-items: start;
+        }
+
+        .summary-grid .prose p {
+            color: var(--ink-soft);
+            margin: 0 0 1.1rem;
+            font-size: 15.5px;
+        }
+
+        .summary-grid .prose strong {
+            color: var(--ink);
+        }
+
+        .callout-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .callout {
+            background: var(--cream-deep);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 1.1rem 1.2rem;
+        }
+
+        .callout .big {
+            font-family: 'Fraunces', serif;
+            font-size: 30px;
+            color: var(--forest-deep);
+            font-weight: 600;
+        }
+
+        .callout .label {
+            font-size: 12px;
+            color: var(--ink-soft);
+            margin-top: 0.15rem;
+        }
+
+        /* ---------- COMPETITOR CARDS ---------- */
+        .field-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4rem;
+            margin-top: 2.6rem;
+        }
+
+        .profile {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 1.9rem 1.9rem 1.7rem;
+            position: relative;
+        }
+
+        .profile.is-nuha {
+            background: var(--forest);
+            border-color: var(--forest);
+        }
+
+        .profile-head {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-dot {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            flex: none;
+        }
+
+        .profile h3 {
+            font-size: 22px;
+            color: var(--forest-deep);
+        }
+
+        .profile.is-nuha h3 {
+            color: #fff;
+        }
+
+        .profile .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            color: var(--walnut);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+        .profile.is-nuha .tag {
+            color: var(--gold-bright);
+        }
+
+        .profile p.desc {
+            font-size: 14px;
+            color: var(--ink-soft);
+            margin: 0.95rem 0 1.1rem;
+        }
+
+        .profile.is-nuha p.desc {
+            color: #D6DCCC;
+        }
+
+        .profile .kv {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.35rem 0.8rem;
+            font-size: 12.5px;
+            margin-bottom: 1.1rem;
+        }
+
+        .profile .kv dt {
+            color: var(--walnut);
+            font-weight: 600;
+        }
+
+        .profile.is-nuha .kv dt {
+            color: var(--gold-bright);
+        }
+
+        .profile .kv dd {
+            margin: 0;
+            color: var(--ink-soft);
+        }
+
+        .profile.is-nuha .kv dd {
+            color: #CBD3C1;
+        }
+
+        .swpair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+            border-top: 1px solid var(--line);
+            padding-top: 1rem;
+        }
+
+        .profile.is-nuha .swpair {
+            border-color: #3E4B36;
+        }
+
+        .swpair .h {
+            font-size: 10.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: var(--forest-mid);
+            margin-bottom: 0.3rem;
+        }
+
+        .profile.is-nuha .swpair .h {
+            color: var(--gold-bright);
+        }
+
+        .swpair ul {
+            margin: 0;
+            padding-left: 1.05rem;
+            font-size: 12px;
+            color: var(--ink-soft);
+        }
+
+        .profile.is-nuha .swpair ul {
+            color: #CBD3C1;
+        }
+
+        .swpair li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* ---------- TABLE ---------- */
+        .tbl-wrap {
+            overflow-x: auto;
+            margin-top: 2.4rem;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+        }
+
+        table.cmp {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            min-width: 900px;
+        }
+
+        table.cmp thead th {
+            background: var(--forest-deep);
+            color: #fff;
+            text-align: left;
+            padding: 0.85rem 1.1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        table.cmp thead th:first-child {
+            color: #B7C0AA;
+        }
+
+        table.cmp tbody td {
+            padding: 0.85rem 1.1rem;
+            border-top: 1px solid var(--line);
+            vertical-align: top;
+        }
+
+        table.cmp tbody tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.015);
+        }
+
+        table.cmp td:first-child {
+            font-weight: 600;
+            color: var(--forest-deep);
+            white-space: nowrap;
+        }
+
+        table.cmp td.nuha-cell {
+            color: var(--forest-mid);
+            font-style: italic;
+            font-weight: 500;
+            background: rgba(70, 88, 63, 0.06);
+        }
+
+        /* ---------- deep-dive two col ---------- */
+        .duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        .panel {
+            border-radius: var(--radius);
+            padding: 1.6rem 1.7rem;
+            border: 1px solid var(--line);
+            background: #fff;
+        }
+
+        .panel.dark {
+            background: var(--forest);
+            border-color: var(--forest);
+            color: #fff;
+        }
+
+        .panel h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--walnut);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            margin-bottom: 0.9rem;
+        }
+
+        .panel.dark h4 {
+            color: var(--gold-bright);
+        }
+
+        .panel p {
+            font-size: 14px;
+            color: var(--ink-soft);
+            margin: 0 0 0.8rem;
+        }
+
+        .panel.dark p {
+            color: #D6DCCC;
+        }
+
+        .panel strong {
+            color: var(--ink);
+        }
+
+        .panel.dark strong {
+            color: #fff;
+        }
+
+        .fullwidth-note {
+            margin-top: 1.4rem;
+            border-radius: var(--radius);
+            background: var(--cream-deep);
+            border: 1px solid var(--line);
+            padding: 1.1rem 1.4rem;
+            font-size: 13.5px;
+            color: var(--ink-soft);
+        }
+
+        .fullwidth-note strong {
+            color: var(--forest-deep);
+        }
+
+        /* ---------- reviews strip ---------- */
+        .review-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .review {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 1rem 1.1rem;
+        }
+
+        .review .who {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--walnut);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .review p {
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* ---------- marketing positioning rows ---------- */
+        .posrow {
+            display: grid;
+            grid-template-columns: 170px 1fr 1.2fr;
+            gap: 1.4rem;
+            align-items: center;
+            padding: 1.15rem 1.3rem;
+            border-radius: 12px;
+            margin-bottom: 0.7rem;
+            border: 1px solid var(--line);
+            background: #fff;
+        }
+
+        .posrow.is-nuha {
+            background: var(--forest);
+            border-color: var(--forest);
+        }
+
+        .posrow .who {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--forest-deep);
+        }
+
+        .posrow.is-nuha .who {
+            color: #fff;
+        }
+
+        .posrow .who .d {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            flex: none;
+        }
+
+        .posrow .quote {
+            font-style: italic;
+            color: var(--walnut);
+            font-size: 14.5px;
+        }
+
+        .posrow.is-nuha .quote {
+            color: var(--gold-bright);
+        }
+
+        .posrow .note {
+            font-size: 13px;
+            color: var(--ink-soft);
+        }
+
+        .posrow.is-nuha .note {
+            color: #D6DCCC;
+        }
+
+        /* ---------- spectrum ---------- */
+        .spectrum {
+            position: relative;
+            margin: 3rem 0 1rem;
+            padding: 0 1rem;
+        }
+
+        .spectrum .track {
+            height: 2px;
+            background: var(--line);
+            position: relative;
+        }
+
+        .spectrum .pt {
+            position: absolute;
+            top: -9px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid var(--cream);
+        }
+
+        .spectrum .lbl {
+            position: absolute;
+            top: -52px;
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--forest-deep);
+            white-space: nowrap;
+        }
+
+        .spectrum .sub {
+            position: absolute;
+            top: 24px;
+            font-size: 11.5px;
+            color: var(--ink-soft);
+            width: 150px;
+            text-align: center;
+        }
+
+        .spectrum .end {
+            position: absolute;
+            top: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: .06em;
+            color: #9CA28C;
+            text-transform: uppercase;
+        }
+
+        /* ---------- pricing model comparison ---------- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .pmodel {
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            background: #fff;
+            padding: 1.3rem 1.2rem;
+        }
+
+        .pmodel.is-nuha {
+            background: var(--forest);
+            border-color: var(--forest);
+        }
+
+        .pmodel .tier {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            color: var(--walnut);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .pmodel.is-nuha .tier {
+            color: var(--gold-bright);
+        }
+
+        .pmodel h4 {
+            font-size: 16px;
+            color: var(--forest-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .pmodel.is-nuha h4 {
+            color: #fff;
+        }
+
+        .pmodel p {
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            margin: 0;
+        }
+
+        .pmodel.is-nuha p {
+            color: #D6DCCC;
+        }
+
+        /* ---------- product design ---------- */
+        .duo-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.2rem;
+            margin-top: 2.4rem;
+        }
+
+        .col-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: var(--walnut);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .design-item {
+            border-radius: 12px;
+            padding: 1.2rem 1.3rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .design-item.market {
+            background: var(--cream-deep);
+            border: 1px solid var(--line);
+        }
+
+        .design-item.nuha {
+            background: var(--forest);
+        }
+
+        .design-item h5 {
+            font-family: 'Fraunces', serif;
+            font-size: 15.5px;
+            color: var(--forest-deep);
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        .design-item.nuha h5 {
+            color: var(--gold-bright);
+        }
+
+        .design-item p {
+            font-size: 12.8px;
+            color: var(--ink-soft);
+            margin: 0;
+        }
+
+        .design-item.nuha p {
+            color: #D6DCCC;
+        }
+
+        .imagined-scene {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2.6rem;
+        }
+
+        .scene {
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: #fff;
+            padding: 1.1rem;
+        }
+
+        .scene.is-nuha {
+            background: var(--forest);
+            border-color: var(--forest);
+        }
+
+        .scene .sceneco {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--walnut);
+            margin-bottom: 0.5rem;
+        }
+
+        .scene.is-nuha .sceneco {
+            color: var(--gold-bright);
+        }
+
+        .scene p {
+            font-size: 12px;
+            color: var(--ink-soft);
+            margin: 0;
+        }
+
+        .scene.is-nuha p {
+            color: #D6DCCC;
+        }
+
+        /* ---------- SWOT ---------- */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-top: 2.4rem;
+        }
+
+        .swot-box {
+            border-radius: var(--radius);
+            padding: 1.6rem 1.7rem;
+        }
+
+        .swot-box h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-bottom: 1rem;
+        }
+
+        .swot-box ul {
+            margin: 0;
+            padding-left: 1.15rem;
+            font-size: 13.5px;
+        }
+
+        .swot-box li {
+            margin-bottom: 0.55rem;
+            line-height: 1.5;
+        }
+
+        .swot-box.strength {
+            background: var(--forest);
+            color: #fff;
+        }
+
+        .swot-box.strength h4 {
+            color: var(--gold-bright);
+        }
+
+        .swot-box.weakness {
+            background: var(--walnut-soft);
+            color: #fff;
+        }
+
+        .swot-box.weakness h4 {
+            color: #fff;
+        }
+
+        .swot-box.opportunity {
+            background: var(--cream-deep);
+            border: 1px solid var(--line);
+            color: var(--ink);
+        }
+
+        .swot-box.opportunity h4 {
+            color: var(--walnut);
+        }
+
+        .swot-box.threat {
+            background: var(--teachmint);
+            color: #fff;
+        }
+
+        .swot-box.threat h4 {
+            color: #fff;
+        }
+
+        /* ---------- roadmap ---------- */
+        .roadmap {
+            margin-top: 2.6rem;
+        }
+
+        .rm-phase {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1.6rem;
+            padding: 1.6rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .rm-phase:first-child {
+            border-top: none;
+        }
+
+        .rm-phase .when {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            font-size: 19px;
+            color: var(--forest-deep);
+        }
+
+        .rm-phase .when small {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 400;
+            font-size: 11px;
+            color: var(--walnut);
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+        }
+
+        .rm-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem;
+        }
+
+        .rm-item {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 0.95rem 1.1rem;
+        }
+
+        .rm-item h5 {
+            font-size: 13.5px;
+            color: var(--forest-deep);
+            margin: 0 0 0.3rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .rm-item p {
+            font-size: 12px;
+            color: var(--ink-soft);
+            margin: 0;
+        }
+
+        footer {
+            padding: 3rem 0 4rem;
+        }
+
+        footer p {
+            font-size: 12px;
+            color: #9CA28C;
+            max-width: 520px;
+        }
+
+        code.inline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            background: var(--cream-deep);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            color: var(--walnut);
+        }
+
+        /* ---------- responsive ---------- */
+        @media (max-width:980px) {
+            nav.rail {
+                width: 100%;
+                height: auto;
+                position: sticky;
+                top: 0;
+                padding: 0.9rem 1.1rem;
+                background: var(--cream);
+                border-bottom: 1px solid var(--line);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.6rem;
+                z-index: 100;
+            }
+
+            nav.rail>div:last-child {
+                display: none;
+            }
+
+            /* hide footnote on mobile */
+            nav.rail ul {
+                display: flex;
+                flex-direction: row;
+                gap: 0.3rem;
+                margin: 0;
+                padding: 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            nav.rail ul::-webkit-scrollbar {
+                display: none;
+            }
+
+            nav.rail li {
+                margin: 0;
+                flex: none;
+            }
+
+            nav.rail a.navlink {
+                white-space: nowrap;
+                padding: 0.35rem 0.7rem;
+                background: var(--cream-deep);
+                border-radius: 20px;
+                font-size: 12.5px;
+            }
+
+            nav.rail a.navlink .n {
+                display: none;
+            }
+
+            nav.rail a.navlink.active {
+                background: var(--forest);
+                color: #fff;
+            }
+
+            section[id] {
+                scroll-margin-top: 64px;
+            }
+
+            main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .wrap {
+                padding: 0 1.3rem;
+            }
+
+            .quickgrid,
+            .field-grid,
+            .duo,
+            .review-strip,
+            .pricing-grid,
+            .imagined-scene,
+            .swot-grid,
+            .summary-grid,
+            .duo-columns,
+            .rm-items {
+                grid-template-columns: 1fr !important;
+            }
+
+            .posrow {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .rm-phase {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="rail">
+        <div>
+            <div class="brand">NUHA<span>Competitive Intelligence</span></div>
+            <ul id="navlist">
+                <li><a class="navlink" href="#overview"><span class="n">00</span>Overview</a></li>
+                <li><a class="navlink" href="#field"><span class="n">01</span>The Field</a></li>
+                <li><a class="navlink" href="#technical"><span class="n">02</span>Technical</a></li>
+                <li><a class="navlink" href="#brand"><span class="n">03</span>Brand &amp; Marketing</a></li>
+                <li><a class="navlink" href="#design"><span class="n">04</span>Product Design</a></li>
+                <li><a class="navlink" href="#swot"><span class="n">05</span>SWOT</a></li>
+                <li><a class="navlink" href="#roadmap"><span class="n">06</span>Roadmap</a></li>
+            </ul>
+            <a class="storylink" href="nuhaos-story.html">NUHAOS Product Story →</a>
+        </div>
+        <div class="foot-note">Internal use only.<br>Compiled from public sources,<br>July 2026.</div>
+    </nav>
+
+    <main>
+
+        <!-- ============ HERO ============ -->
+        <section class="hero wrap" id="overview">
+            <div class="eyebrow">Internal Briefing · Competitive Landscape · July 2026</div>
+            <h1>NUHA against the market<br><em>we didn't build in a vacuum.</em></h1>
+            <p class="sub">A working reference on how NUHA compares to ZeyMal, Educian, and Teachmint — technically, in
+                brand and marketing, and in product-design philosophy. Written for internal strategy use, with the weak
+                spots left in on purpose.</p>
+            <div class="cta-row">
+                <a class="btn-primary" href="nuhaos-story.html">Read the NUHAOS Product Story <span
+                        class="arrow">→</span></a>
+                <a class="btn-secondary" href="#field">Jump to the field</a>
+            </div>
+            <div class="meta-row">
+                <div><span>Scope</span>4 platforms, India K-12 ERP</div>
+                <div><span>Sources</span>Public sites, app stores, review platforms</div>
+                <div><span>Confidence</span>High on published claims, low on unverified UX</div>
+            </div>
+            <div class="quickgrid">
+                <div class="qcard">
+                    <div class="qdot" style="background:var(--zeymal)"></div>
+                    <h4>ZeyMal</h4>
+                    <p>Offline-core regional ERP, J&amp;K-concentrated.</p>
+                    <div class="stat">100+ schools</div>
+                </div>
+                <div class="qcard">
+                    <div class="qdot" style="background:var(--educian)"></div>
+                    <h4>Educian</h4>
+                    <p>Cloud ERP+LMS with a free tier, since 2016.</p>
+                    <div class="stat">20+ modules</div>
+                </div>
+                <div class="qcard">
+                    <div class="qdot" style="background:var(--teachmint)"></div>
+                    <h4>Teachmint</h4>
+                    <p>Integrated platform + owned AI hardware.</p>
+                    <div class="stat">Millions of educators</div>
+                </div>
+                <div class="qcard nuha">
+                    <div class="qdot" style="background:var(--gold-bright)"></div>
+                    <h4>NUHA</h4>
+                    <p>Privacy-first OS, restraint-first AI co-teacher.</p>
+                    <div class="stat">Pre-launch · Founding 50</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EXEC SUMMARY ============ -->
+        <section class="wrap" id="exec">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Executive Summary</span>
+            </div>
+            <h2 class="section-title">A crowded, commodity category — and one brand refusing to sound like it.</h2>
+            <div class="summary-grid">
+                <div class="prose">
+                    <p>India's school-ERP market is dense with functionally similar products. ZeyMal, Educian, and
+                        Teachmint all sell some combination of attendance, fees, exams, communication, and admissions —
+                        and all three describe themselves in nearly identical language: <strong>"all-in-one,"
+                            "affordable," "user-friendly," "requires no technical knowledge."</strong> Differentiation
+                        in this category has historically come from install base and price, not from product philosophy.
+                    </p>
+                    <p>NUHA enters that field from a different angle entirely. Instead of competing on module count, it
+                        leads with two things none of the incumbents have said out loud: a stated refusal to build
+                        child-profiling features, and an AI layer that is explicitly <strong>human-in-the-loop by
+                            design</strong> rather than automation-first. That's a genuine differentiator — but it is
+                        also, right now, a claim rather than a track record.</p>
+                    <p>The honest read: <strong>Teachmint has scale, Educian has longevity, ZeyMal has regional trust,
+                            and NUHA has a story.</strong> A story is a real asset in a commodity market — buyers
+                        remember brands that mean something — but it converts to revenue only if it's backed by proof
+                        schools can check: uptime, security posture, and reference customers.</p>
+                </div>
+                <div class="callout-stack">
+                    <div class="callout">
+                        <div class="big">0</div>
+                        <div class="label">Independent reviews of NUHA found at time of writing</div>
+                    </div>
+                    <div class="callout">
+                        <div class="big">4/4</div>
+                        <div class="label">Competitors marketing themselves as "all-in-one" — a saturated claim</div>
+                    </div>
+                    <div class="callout">
+                        <div class="big">1</div>
+                        <div class="label">Player (Teachmint) with owned hardware distribution</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ THE FIELD ============ -->
+        <section class="wrap" id="field">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 01</span>
+            </div>
+            <h2 class="section-title">The Field</h2>
+            <p class="lede">Four companies, four different bets on what a school actually needs from software.</p>
+
+            <div class="field-grid">
+
+                <div class="profile">
+                    <div class="profile-head">
+                        <div class="profile-dot" style="background:var(--zeymal)"></div>
+                        <div>
+                            <h3>ZeyMal</h3>
+                            <div class="tag">RationalTabs Technologies · est. 2012</div>
+                        </div>
+                    </div>
+                    <p class="desc">A hybrid offline/online ERP built by a small regional vendor, sold heavily through
+                        direct sales relationships across Jammu &amp; Kashmir. Its pitch is continuity: the admin office
+                        keeps running even when the internet doesn't.</p>
+                    <dl class="kv">
+                        <dt>Model</dt>
+                        <dd>Subscription, sales-led, regional</dd>
+                        <dt>Reach</dt>
+                        <dd>100+ schools; ~5,300 mobile app installs</dd>
+                        <dt>Hardware</dt>
+                        <dd>Biometric attendance, RFID library tags, QR access</dd>
+                    </dl>
+                    <div class="swpair">
+                        <div>
+                            <div class="h">Strengths</div>
+                            <ul>
+                                <li>Works without reliable internet</li>
+                                <li>Deep regional trust &amp; sales relationships</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="h">Weaknesses</div>
+                            <ul>
+                                <li>Dated web presence</li>
+                                <li>No AI, no compliance messaging</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-head">
+                        <div class="profile-dot" style="background:var(--educian)"></div>
+                        <div>
+                            <h3>Educian</h3>
+                            <div class="tag">Independent SaaS · est. 2016</div>
+                        </div>
+                    </div>
+                    <p class="desc">A conventional cloud ERP+LMS bundle, re-platformed to containers in 2020 for scale.
+                        Leads with a free tier and eight years of continuous operation as its trust signals in a market
+                        where many vendors are short-lived.</p>
+                    <dl class="kv">
+                        <dt>Model</dt>
+                        <dd>Freemium; paid tiers for larger institutions</dd>
+                        <dt>Reach</dt>
+                        <dd>K-12 through university &amp; coaching institutes</dd>
+                        <dt>Hardware</dt>
+                        <dd>Biometric attendance only</dd>
+                    </dl>
+                    <div class="swpair">
+                        <div>
+                            <div class="h">Strengths</div>
+                            <ul>
+                                <li>Longest continuous track record here</li>
+                                <li>Broadest institution-type coverage</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="h">Weaknesses</div>
+                            <ul>
+                                <li>Marketing feels stale (dormant blog)</li>
+                                <li>No differentiated narrative</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-head">
+                        <div class="profile-dot" style="background:var(--teachmint)"></div>
+                        <div>
+                            <h3>Teachmint</h3>
+                            <div class="tag">Venture-backed classroom-tech company</div>
+                        </div>
+                    </div>
+                    <p class="desc">The category's scale leader. Markets itself as an "Integrated School Platform" —
+                        ERP, LMS, and content — and, unusually, manufactures its own AI-enabled smart whiteboards to
+                        lock in classroom hardware alongside the software.</p>
+                    <dl class="kv">
+                        <dt>Model</dt>
+                        <dd>Freemium software + high-ticket hardware (~₹1.5L/board)</dd>
+                        <dt>Reach</dt>
+                        <dd>Millions of educators, K-12 to enterprise chains</dd>
+                        <dt>Hardware</dt>
+                        <dd>Teachmint X digital board, Google EDLA-certified</dd>
+                    </dl>
+                    <div class="swpair">
+                        <div>
+                            <div class="h">Strengths</div>
+                            <ul>
+                                <li>Category-leading scale &amp; brand recall</li>
+                                <li>Owns its hardware distribution channel</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="h">Weaknesses</div>
+                            <ul>
+                                <li>User reviews cite bugs, missing controls</li>
+                                <li>Ticket-heavy support experience</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile is-nuha">
+                    <div class="profile-head">
+                        <div class="profile-dot" style="background:var(--gold-bright)"></div>
+                        <div>
+                            <h3>NUHA</h3>
+                            <div class="tag">Horfay Taqnia Pvt. Ltd. · Srinagar</div>
+                        </div>
+                    </div>
+                    <p class="desc">A school operating system built around a single refusal: no child surveillance. The
+                        core ERP is free forever; NUHA monetizes only the AI co-teacher and white-labeling. Currently in
+                        early access under a "Founding 50" launch cohort.</p>
+                    <dl class="kv">
+                        <dt>Model</dt>
+                        <dd>Free ERP core; paid AI + white-label</dd>
+                        <dt>Reach</dt>
+                        <dd>Pre-launch — no public install-base figures yet</dd>
+                        <dt>Hardware</dt>
+                        <dd>Bus-level GPS transport tracking, privacy-scoped</dd>
+                    </dl>
+                    <div class="swpair">
+                        <div>
+                            <div class="h">Strengths</div>
+                            <ul>
+                                <li>Only DPDP-first, AI-native narrative</li>
+                                <li>Distinctive, ownable brand voice</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="h">Weaknesses</div>
+                            <ul>
+                                <li>Zero independent reviews or proof points</li>
+                                <li>No public security/uptime data yet</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ TECHNICAL ============ -->
+        <section class="wrap" id="technical">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 02</span>
+            </div>
+            <h2 class="section-title">Technical Comparison</h2>
+            <p class="lede">Architecture, AI, hardware, and — critically — what actual users report once the sales deck
+                closes.</p>
+
+            <div class="tbl-wrap">
+                <table class="cmp">
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>ZeyMal</th>
+                            <th>Educian</th>
+                            <th>Teachmint</th>
+                            <th>NUHA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Deployment</td>
+                            <td>Offline core + web/app</td>
+                            <td>Cloud, containerized (2020)</td>
+                            <td>SaaS + owned hardware</td>
+                            <td class="nuha-cell">Cloud, multi-tenant, white-label</td>
+                        </tr>
+                        <tr>
+                            <td>AI capability</td>
+                            <td>None</td>
+                            <td>None</td>
+                            <td>Board-embedded EduAI</td>
+                            <td class="nuha-cell">Restraint-first AI co-teacher</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile app</td>
+                            <td>Android / iOS, ~5.3K installs</td>
+                            <td>iOS / Android, all user types</td>
+                            <td>iOS / Android, enterprise-grade</td>
+                            <td class="nuha-cell">Parent-first mobile experience</td>
+                        </tr>
+                        <tr>
+                            <td>Hardware</td>
+                            <td>Biometric, RFID, QR access</td>
+                            <td>Biometric only</td>
+                            <td>AI smart boards (owned line)</td>
+                            <td class="nuha-cell">Bus-level GPS (never on the child)</td>
+                        </tr>
+                        <tr>
+                            <td>Payments</td>
+                            <td>Online fee collection</td>
+                            <td>UPI, cards, wallets</td>
+                            <td>Fee module + hardware financing</td>
+                            <td class="nuha-cell">UPI, bulk billing, receipts</td>
+                        </tr>
+                        <tr>
+                            <td>Compliance stance</td>
+                            <td>Not published</td>
+                            <td>Not published</td>
+                            <td>Not published</td>
+                            <td class="nuha-cell">DPDP-first, publicly stated</td>
+                        </tr>
+                        <tr>
+                            <td>Scale proof</td>
+                            <td>100+ schools</td>
+                            <td>Since 2016, no figures</td>
+                            <td>Millions of educators</td>
+                            <td class="nuha-cell">Pre-launch / Founding 50</td>
+                        </tr>
+                        <tr>
+                            <td>Documented issues</td>
+                            <td>None surfaced (generic reviews)</td>
+                            <td>None surfaced</td>
+                            <td>Bugs, missing delete controls, ticket load</td>
+                            <td class="nuha-cell">Unknown — no independent reviews yet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="duo">
+                <div class="panel">
+                    <h4>AI — feature vs. philosophy</h4>
+                    <p><strong>ZeyMal and Educian</strong> carry no AI layer at all; both are pure workflow ERPs for
+                        attendance, fees, and exams.</p>
+                    <p><strong>Teachmint's</strong> AI is a hardware upsell — EduAI lives on the digital board for
+                        lesson plans and quizzes. It's a teaching tool bundled with a device sale, not a claim about how
+                        student data should be handled.</p>
+                    <p>Neither camp makes any public statement about whether — or how — student data feeds their models.
+                    </p>
+                </div>
+                <div class="panel dark">
+                    <h4>NUHA's position</h4>
+                    <p><strong>Human-in-the-loop, always.</strong> The AI drafts report-card remarks, lesson plans, and
+                        parent notes from objective signals; a teacher reviews and sends every one.</p>
+                    <p><strong>No profiling.</strong> It doesn't predict outcomes or infer a child's emotional state — a
+                        boundary the product explicitly states rather than implies.</p>
+                    <p><strong>Named compliance.</strong> The only one of the four to invoke India's DPDP law by name in
+                        its own marketing.</p>
+                </div>
+            </div>
+
+            <div class="fullwidth-note">
+                <strong>Read this honestly:</strong> NUHA's technical story is architecture over evidence. The three
+                incumbents carry real scars — visible in their own user reviews — while NUHA carries none, in either
+                direction, because it hasn't been tested at scale yet. That's not a weakness to hide; it's the actual
+                state of the evidence.
+            </div>
+
+            <div class="review-strip">
+                <div class="review">
+                    <div class="who">ZeyMal · user review</div>
+                    <p>"Support has been credible whenever we've needed it, including help launching our school
+                        website."</p>
+                </div>
+                <div class="review">
+                    <div class="who">Educian · directory listing</div>
+                    <p>Marketed as requiring "minimal IT skills," with setup and hosting handled entirely by the vendor.
+                    </p>
+                </div>
+                <div class="review">
+                    <div class="who">Teachmint · software review</div>
+                    <p>"We have to raise a support ticket for even the smallest concerns" — a recurring friction point
+                        in reviews.</p>
+                </div>
+                <div class="review">
+                    <div class="who">Teachmint · software review</div>
+                    <p>Some areas reportedly lack a delete option, which reviewers flag as inconvenient when data entry
+                        mistakes happen.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ BRAND & MARKETING ============ -->
+        <section class="wrap" id="brand">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 03</span>
+            </div>
+            <h2 class="section-title">Brand &amp; Marketing</h2>
+            <p class="lede">How each company introduces itself — and what that introduction is trying to make you feel.
+            </p>
+
+            <div style="margin-top:2.2rem;">
+                <div class="posrow">
+                    <div class="who">
+                        <div class="d" style="background:var(--zeymal)"></div>ZeyMal
+                    </div>
+                    <div class="quote">"Time-effective, affordable pricing."</div>
+                    <div class="note">Efficiency &amp; cost — generic ERP-vendor language, sales-relationship driven.
+                    </div>
+                </div>
+                <div class="posrow">
+                    <div class="who">
+                        <div class="d" style="background:var(--educian)"></div>Educian
+                    </div>
+                    <div class="quote">"All-in-one mobility-driven system."</div>
+                    <div class="note">Feature breadth plus a free tier as the trust hook.</div>
+                </div>
+                <div class="posrow">
+                    <div class="who">
+                        <div class="d" style="background:var(--teachmint)"></div>Teachmint
+                    </div>
+                    <div class="quote">"Integrated School Platform."</div>
+                    <div class="note">Scale &amp; infrastructure — ERP, LMS, and hardware sold as one stack.</div>
+                </div>
+                <div class="posrow is-nuha">
+                    <div class="who">
+                        <div class="d" style="background:var(--gold-bright)"></div>NUHA
+                    </div>
+                    <div class="quote">"Run the school. Raise the child."</div>
+                    <div class="note">Values &amp; emotion — privacy and care as the headline, not a footnote.</div>
+                </div>
+            </div>
+
+            <h3 style="font-size:20px; margin-top:3.4rem;">Brand voice: generic → distinctive</h3>
+            <div class="spectrum">
+                <div class="track"></div>
+                <div class="end" style="left:0;">Functional / generic</div>
+                <div class="end" style="right:0; text-align:right;">Distinctive / owned</div>
+                <div class="pt" style="left:6%; background:var(--zeymal);"></div>
+                <div class="lbl" style="left:6%;">ZeyMal</div>
+                <div class="sub" style="left:6%; margin-left:-65px;">Testimonial-heavy brochure copy</div>
+                <div class="pt" style="left:30%; background:var(--educian);"></div>
+                <div class="lbl" style="left:30%;">Educian</div>
+                <div class="sub" style="left:30%; margin-left:-65px;">Standard SaaS feature listing</div>
+                <div class="pt" style="left:62%; background:var(--teachmint);"></div>
+                <div class="lbl" style="left:62%;">Teachmint</div>
+                <div class="sub" style="left:62%; margin-left:-65px;">Confident, scale-oriented, corporate</div>
+                <div class="pt" style="left:92%; background:var(--nuha);"></div>
+                <div class="lbl" style="left:92%; transform:translateX(-70%);">NUHA</div>
+                <div class="sub" style="left:92%; margin-left:-65px;">Literary, values-led, culturally specific</div>
+            </div>
+            <div class="fullwidth-note" style="margin-top:4rem;"><strong>The risk of owning a distinctive
+                    voice:</strong> it raises expectations. A brand that states "we refuse to surveil children" will be
+                held to that line far harder than one that never made the promise. Every future feature decision
+                inherits this bar.</div>
+
+            <h3 style="font-size:20px; margin-top:3.4rem;">Pricing model comparison</h3>
+            <div class="pricing-grid">
+                <div class="pmodel">
+                    <div class="tier">ZeyMal</div>
+                    <h4>Flat subscription</h4>
+                    <p>Straightforward recurring fee, sold through direct regional sales relationships.</p>
+                </div>
+                <div class="pmodel">
+                    <div class="tier">Educian</div>
+                    <h4>Freemium</h4>
+                    <p>Free version to build trust, paid tiers layered on top as institutions grow.</p>
+                </div>
+                <div class="pmodel">
+                    <div class="tier">Teachmint</div>
+                    <h4>Freemium + hardware</h4>
+                    <p>Free/enterprise software tiers, with the real margin sitting in the ~₹1.5L digital board.</p>
+                </div>
+                <div class="pmodel is-nuha">
+                    <div class="tier">NUHA</div>
+                    <h4>Free core, paid AI</h4>
+                    <p>The only model that gives away the ERP entirely and charges solely for intelligence and branding.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PRODUCT DESIGN ============ -->
+        <section class="wrap" id="design">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 04</span>
+            </div>
+            <h2 class="section-title">Product Design Philosophy</h2>
+            <p class="lede">Inferred from public marketing and product pages, not a hands-on UX audit — but the pattern
+                is consistent enough to be worth naming.</p>
+
+            <div class="duo-columns">
+                <div>
+                    <span class="col-label">ZeyMal · Educian · Teachmint (typical pattern)</span>
+                    <div class="design-item market">
+                        <h5>Metric-first UI</h5>
+                        <p>Ranks, scores, and leaderboards presented as the primary lens on a student.</p>
+                    </div>
+                    <div class="design-item market">
+                        <h5>Module checklist</h5>
+                        <p>Admissions, fees, attendance, and exams shown as separate, independent tiles rather than one
+                            continuous experience.</p>
+                    </div>
+                    <div class="design-item market">
+                        <h5>Admin-centric entry point</h5>
+                        <p>Designed first for office staff; parent and student views read as an afterthought bolted onto
+                            the admin core.</p>
+                    </div>
+                </div>
+                <div>
+                    <span class="col-label">NUHA</span>
+                    <div class="design-item nuha">
+                        <h5>Growth Timeline</h5>
+                        <p>A child's term-over-term story — deliberately not a score or a rank.</p>
+                    </div>
+                    <div class="design-item nuha">
+                        <h5>"Interlocked whole"</h5>
+                        <p>Modules designed as one continuous system — the khatamband-ceiling metaphor — rather than
+                            separate tiles bolted together.</p>
+                    </div>
+                    <div class="design-item nuha">
+                        <h5>Home-first design</h5>
+                        <p>Explicitly built so a parent "opens the app and smiles" — the home experience is a stated
+                            design goal, not a byproduct.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size:20px; margin-top:3.2rem;">A parent opens the app: four different first impressions</h3>
+            <div class="imagined-scene">
+                <div class="scene">
+                    <div class="sceneco">ZeyMal</div>
+                    <p>A login screen and a fee-due notice — functional, but administrative in tone from the first tap.
+                    </p>
+                </div>
+                <div class="scene">
+                    <div class="sceneco">Educian</div>
+                    <p>A dashboard of grades, timetable, and attendance — clear, but reads like a report card, not a
+                        relationship.</p>
+                </div>
+                <div class="scene">
+                    <div class="sceneco">Teachmint</div>
+                    <p>A polished, enterprise-grade app — comprehensive, but built around institutional workflows more
+                        than a family's daily rhythm.</p>
+                </div>
+                <div class="scene is-nuha">
+                    <div class="sceneco">NUHA</div>
+                    <p>A warm, plain-language note about the day, a gate pass, one line of encouragement — designed to
+                        be read as a message, not a report.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SWOT ============ -->
+        <section class="wrap" id="swot">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 05 · Honest self-assessment</span>
+            </div>
+            <h2 class="section-title">NUHA: SWOT Against This Field</h2>
+
+            <div class="swot-grid">
+                <div class="swot-box strength">
+                    <h4>Strengths</h4>
+                    <ul>
+                        <li>Only player with a real AI narrative and an explicit privacy/DPDP stance</li>
+                        <li>Distinctive, memorable brand voice in a commodity category</li>
+                        <li>Free core ERP lowers switching cost for budget-conscious schools</li>
+                    </ul>
+                </div>
+                <div class="swot-box weakness">
+                    <h4>Weaknesses</h4>
+                    <ul>
+                        <li>Zero independent reviews or track record — every claim is currently unproven</li>
+                        <li>No published uptime, security certifications, or scale figures</li>
+                        <li>Negligible install base against 100+ (ZeyMal) to millions (Teachmint)</li>
+                    </ul>
+                </div>
+                <div class="swot-box opportunity">
+                    <h4>Opportunities</h4>
+                    <ul>
+                        <li>Regional-trust playbook (Kashmir-built) mirrors ZeyMal's, with sharper branding behind it
+                        </li>
+                        <li>"Free ERP, paid AI" undercuts Teachmint's hardware-tied pricing model</li>
+                        <li>Compliance-first story lands harder as DPDP enforcement matures nationally</li>
+                    </ul>
+                </div>
+                <div class="swot-box threat">
+                    <h4>Threats</h4>
+                    <ul>
+                        <li>Teachmint's scale and owned hardware could out-muscle us on enterprise/chain-school deals
+                        </li>
+                        <li>Educian's free tier competes directly for the same budget-conscious schools</li>
+                        <li>A single publicized data incident would be disproportionately damaging given our stated
+                            promise</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ROADMAP ============ -->
+        <section class="wrap" id="roadmap">
+            <div class="kicker-row">
+                <div class="dot"></div><span class="eyebrow">Section 06 · Recommendations</span>
+            </div>
+            <h2 class="section-title">What This Means For Us</h2>
+            <p class="lede">A phased path from "good story" to "proven product," ordered by what unlocks the next stage
+                of trust.</p>
+
+            <div class="roadmap">
+                <div class="rm-phase">
+                    <div class="when">Now<small>0–3 months</small></div>
+                    <div class="rm-items">
+                        <div class="rm-item">
+                            <h5>Publish the proof</h5>
+                            <p>Uptime, security posture, and DPDP compliance detail, published before a competitor
+                                questions it for us.</p>
+                        </div>
+                        <div class="rm-item">
+                            <h5>Instrument the Founding 50</h5>
+                            <p>Structured feedback capture from launch schools — this cohort is our only source of
+                                real-world evidence right now.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rm-phase">
+                    <div class="when">Next<small>3–6 months</small></div>
+                    <div class="rm-items">
+                        <div class="rm-item">
+                            <h5>Bank case studies</h5>
+                            <p>Every incumbent's credibility rests on install base and testimonials — we need our first
+                                cohort's stories on record and public.</p>
+                        </div>
+                        <div class="rm-item">
+                            <h5>Protect the brand voice</h5>
+                            <p>Keep sales collateral from drifting into generic ERP-speak; the distinctiveness is the
+                                moat while feature parity catches up.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rm-phase">
+                    <div class="when">Later<small>6–12 months</small></div>
+                    <div class="rm-items">
+                        <div class="rm-item">
+                            <h5>Price against Teachmint, not Educian</h5>
+                            <p>Our real pricing fight is the AI/white-label layer vs. Teachmint's hardware bundle — not
+                                the free ERP tier Educian already owns.</p>
+                        </div>
+                        <div class="rm-item">
+                            <h5>Formalize the reliability story</h5>
+                            <p>Get ahead of the "bugs and ticket-heavy support" complaints that dogged Teachmint by
+                                publishing our own incident and uptime record.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="wrap">
+            <p>Compiled from publicly available marketing sites, app-store listings, and third-party software review
+                platforms as of July 2026. Product-design observations are inferred from public materials, not a
+                hands-on usability audit. For internal strategy discussion only.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // active-link highlighting on scroll
+        const sections = document.querySelectorAll('main section[id]');
+        const links = document.querySelectorAll('.navlink');
+        const byId = id => document.querySelector('.navlink[href="#' + id + '"]');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    links.forEach(l => l.classList.remove('active'));
+                    const link = byId(entry.target.id);
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+        sections.forEach(s => observer.observe(s));
+    </script>
+
+</body>
+
+</html>
