@@ -3,7 +3,7 @@
 // =============================================
 
 let currentSlide = 1;
-const totalSlides = 12;
+const totalSlides = 13;
 
 // Build nav dots
 function buildNavDots() {

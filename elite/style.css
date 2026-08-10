@@ -1178,13 +1178,65 @@ body {
   line-height: 1.5;
 }
 
-/* ======================== SLIDE 12 ======================== */
+/* ======================== SLIDE 12 / 13 ======================== */
 .vision-intro {
   font-size: 1.05rem;
   line-height: 1.6;
   max-width: 80ch;
   margin: 1rem auto 1.5rem;
   color: rgba(245, 240, 232, .8);
+}
+
+.future-value-grid {
+  display: flex;
+  gap: 16px;
+  max-width: 960px;
+  margin: 1.5rem auto;
+  justify-content: center;
+}
+
+.fv-card {
+  flex: 1;
+  background: rgba(58, 44, 26, .03);
+  border: 1px solid rgba(58, 44, 26, .08);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.fv-card:hover {
+  transform: translateY(-4px);
+  background: rgba(70, 88, 63, .05);
+}
+
+.fv-card span {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.fv-card p {
+  font-size: 0.85rem;
+  color: var(--walnut-soft);
+  line-height: 1.4;
+}
+
+.fv-card p strong {
+  color: var(--walnut);
+}
+
+.fv-card.fv-highlight {
+  background: var(--deodar);
+  border-color: var(--deodar);
+}
+
+.fv-card.fv-highlight p {
+  color: var(--wool-deep);
+}
+
+.fv-card.fv-highlight p strong {
+  color: var(--wool);
 }
 
 .questions-flow {
@@ -1369,6 +1421,11 @@ body {
 
   .governance-grid {
     grid-template-columns: 1fr;
+  }
+
+  .future-value-grid {
+    flex-direction: column;
+    gap: 12px;
   }
 
   .qfv-versus {
