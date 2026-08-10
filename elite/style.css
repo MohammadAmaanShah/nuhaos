@@ -178,13 +178,17 @@ body {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   opacity: 0;
   pointer-events: none;
   transform: translateX(60px) scale(.97);
   transition: opacity var(--transition), transform var(--transition);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
 .slide.active {
@@ -198,6 +202,21 @@ body {
   opacity: 0;
 }
 
+/* Premium Scrollbars styling */
+.slide::-webkit-scrollbar {
+  width: 8px;
+}
+.slide::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slide::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+.slide::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 /* Slide backgrounds & overlays */
 .slide-bg-overlay {
   position: absolute;
@@ -209,6 +228,13 @@ body {
 .slide-wool {
   background: var(--wool);
   color: var(--walnut);
+  scrollbar-color: rgba(58, 44, 26, 0.15) transparent;
+}
+.slide-wool::-webkit-scrollbar-thumb {
+  background: rgba(58, 44, 26, 0.15);
+}
+.slide-wool::-webkit-scrollbar-thumb:hover {
+  background: rgba(58, 44, 26, 0.3);
 }
 
 .slide-deodar {
@@ -218,6 +244,13 @@ body {
 .slide-warm {
   background: linear-gradient(135deg, #f7f2e8 0%, #ede8d8 100%);
   color: var(--walnut);
+  scrollbar-color: rgba(58, 44, 26, 0.15) transparent;
+}
+.slide-warm::-webkit-scrollbar-thumb {
+  background: rgba(58, 44, 26, 0.15);
+}
+.slide-warm::-webkit-scrollbar-thumb:hover {
+  background: rgba(58, 44, 26, 0.3);
 }
 
 /* Slide content */
@@ -226,7 +259,9 @@ body {
   z-index: 2;
   width: 100%;
   max-width: 1200px;
-  padding: 40px 60px;
+  padding: 60px 60px;
+  margin: auto 0;
+  flex-shrink: 0;
 }
 
 .center-content {
