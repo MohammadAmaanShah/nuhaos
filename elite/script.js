@@ -31,6 +31,9 @@ function goToSlide(n) {
   current.classList.remove('active');
   current.classList.add(forward ? 'prev' : 'next-out');
 
+  // Reset scroll position on the next slide before transition
+  next.scrollTop = 0;
+
   currentSlide = n;
 
   next.classList.remove('prev', 'next-out');
@@ -84,20 +87,47 @@ function updateUI() {
 
 // Keyboard navigation
 document.addEventListener('keydown', e => {
+  const slide = document.getElementById(`slide-${currentSlide}`);
+  if (!slide) return;
+
+  const isScrollable = slide.scrollHeight > slide.clientHeight;
+
   switch (e.key) {
     case 'ArrowRight':
-    case 'ArrowDown':
-    case 'PageDown':
-    case ' ':
-      e.preventDefault();
+      // Always transition slide on left/right horizontal arrows
       changeSlide(1);
       break;
     case 'ArrowLeft':
+      changeSlide(-1);
+      break;
+
+    case 'ArrowDown':
+    case 'PageDown':
+    case ' ':
+      if (isScrollable) {
+        const isAtBottom = slide.scrollTop + slide.clientHeight >= slide.scrollHeight - 10;
+        if (!isAtBottom) {
+          // Let standard scrolling happen
+          return;
+        }
+      }
+      e.preventDefault();
+      changeSlide(1);
+      break;
+
     case 'ArrowUp':
     case 'PageUp':
+      if (isScrollable) {
+        const isAtTop = slide.scrollTop <= 10;
+        if (!isAtTop) {
+          // Let standard scrolling happen
+          return;
+        }
+      }
       e.preventDefault();
       changeSlide(-1);
       break;
+
     case 'Home':
       e.preventDefault();
       goToSlide(1);
@@ -129,14 +159,43 @@ document.addEventListener('touchend', e => {
   }
 }, { passive: true });
 
-// Mouse wheel navigation (debounced)
+// Mouse wheel navigation (debounced, aware of scrollable content boundaries)
 let wheelDebounce = false;
 document.addEventListener('wheel', e => {
-  if (wheelDebounce) return;
-  wheelDebounce = true;
-  if (e.deltaY > 30) changeSlide(1);
-  else if (e.deltaY < -30) changeSlide(-1);
-  setTimeout(() => { wheelDebounce = false; }, 800);
+  const slide = document.getElementById(`slide-${currentSlide}`);
+  if (!slide) return;
+
+  const isScrollable = slide.scrollHeight > slide.clientHeight;
+
+  if (e.deltaY > 0) {
+    // Scrolling down
+    if (isScrollable) {
+      const isAtBottom = slide.scrollTop + slide.clientHeight >= slide.scrollHeight - 15;
+      if (!isAtBottom) {
+        // Let natural scroll happen, do not transition slide
+        return;
+      }
+    }
+    // Transition to next slide
+    if (wheelDebounce) return;
+    wheelDebounce = true;
+    changeSlide(1);
+    setTimeout(() => { wheelDebounce = false; }, 800);
+  } else if (e.deltaY < 0) {
+    // Scrolling up
+    if (isScrollable) {
+      const isAtTop = slide.scrollTop <= 15;
+      if (!isAtTop) {
+        // Let natural scroll happen, do not transition slide
+        return;
+      }
+    }
+    // Transition to previous slide
+    if (wheelDebounce) return;
+    wheelDebounce = true;
+    changeSlide(-1);
+    setTimeout(() => { wheelDebounce = false; }, 800);
+  }
 }, { passive: true });
 
 // Slide "next-out" CSS
