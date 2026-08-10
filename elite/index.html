@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Future of Education — NUHA Elite Presentation</title>
+  <meta name="description"
+    content="Why the future belongs to schools that become intelligent — not automated. A premium presentation by Abid Ali Mir." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav id="main-nav">
+    <a href="#" class="nav-logo" onclick="goToSlide(1); return false;">
+      <svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+        <path
+          d="M24 3.5c.9 4 3 6.4 6.2 7-2.3 1.1-3.6 2.8-4 5.3 2.7-1.7 5.5-1.9 8.4-.6-1.9 1.5-2.8 3.4-2.6 5.8 2.9-1.9 5.8-2.2 8.7-1-3 2.7-4.4 5.6-3.9 8.8 2.5-1.3 5-1.3 7.5.1-4.2 2.3-7.4 5.2-9.6 8.9-1.7-1-3.6-1.2-5.6-.5.4-2.3 0-4.4-1.4-6.2v13.1h-3.4V34c-1.4 1.8-1.8 3.9-1.4 6.2-2-.7-3.9-.5-5.6.5-2.2-3.7-5.4-6.6-9.6-8.9 2.5-1.4 5-1.4 7.5-.1.5-3.2-.9-6.1-3.9-8.8 2.9-1.2 5.8-.9 8.7 1 .2-2.4-.7-4.3-2.6-5.8 2.9-1.3 5.7-1.1 8.4.6-.4-2.5-1.7-4.2-4-5.3 3.2-.6 5.3-3 6.2-7Z" />
+      </svg>
+      NUHA ELITE
+    </a>
+    <div class="nav-dots-wrap" id="nav-dots"></div>
+    <div class="nav-actions">
+      <button id="prev-btn" onclick="changeSlide(-1)" aria-label="Previous">&#8592;</button>
+      <span id="slide-counter">1 / 12</span>
+      <button id="next-btn" onclick="changeSlide(1)" aria-label="Next">&#8594;</button>
+    </div>
+  </nav>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar">
+    <div id="progress-fill"></div>
+  </div>
+
+  <!-- SLIDES CONTAINER -->
+  <main id="slides-container">
+
+    <!-- SLIDE 1: HERO / TITLE -->
+    <section class="slide active" id="slide-1" data-slide="1">
+      <div class="slide-bg-overlay"></div>
+      <div class="slide-content center-content">
+        <div class="badge animate-in d1">
+          <span class="badge-line"></span>The Future of Education<span class="badge-line"></span>
+        </div>
+        <h1 class="headline-xl animate-in d2">
+          The School That AI<br /><em>Cannot Replace</em>
+        </h1>
+        <p class="subline animate-in d3">
+          Why the future belongs to schools that become intelligent — not automated.
+        </p>
+        <div class="presenter-box animate-in d4">
+          <div class="presenter-divider"></div>
+          <p class="p-label">Presented by</p>
+          <p class="p-name">Abid Ali Mir</p>
+          <p class="p-role">Lead Content Strategist &amp; G.M · NUHA</p>
+        </div>
+      </div>
+      <div class="slide-num">01</div>
+    </section>
+
+    <!-- SLIDE 2: THE STATUS QUO -->
+    <section class="slide slide-deodar" id="slide-2" data-slide="2">
+      <div class="slide-content left-content">
+        <div class="eyebrow animate-in d1">The Digital Dilemma</div>
+        <h2 class="headline-lg animate-in d2">Technology has transformed<br /><em>almost every industry.</em></h2>
+        <p class="normal-desc animate-in d3">
+          Schools are no exception. Yet, despite significant investment in digital systems, many schools still operate with information distributed across ERP modules, spreadsheets, paper records, messaging platforms, individual devices, and departmental databases.
+        </p>
+        <div class="callout-card animate-in d4">
+          <p class="callout-title">The Critical Inquiry</p>
+          <p class="callout-text">"The school may be digital. <span class="highlight-saffron">But is it intelligent?</span>"</p>
+          <p class="callout-sub">That is the question we believe school leaders should be asking today.</p>
+        </div>
+      </div>
+      <div class="slide-num">02</div>
+    </section>
+
+    <!-- SLIDE 3: DIGITISATION IS NOT ENOUGH -->
+    <section class="slide slide-wool" id="slide-3" data-slide="3">
+      <div class="slide-content center-content">
+        <div class="eyebrow eyebrow-dk animate-in d1">The Problem Is No Longer Digitisation</div>
+        <h2 class="headline-lg headline-dk animate-in d2">For years, the objective was simple:</h2>
+
+        <div class="digitise-grid animate-in d3">
+          <div class="digitise-item">
+            <span class="digitise-check">✓</span>
+            <span class="digitise-label">Move admissions online</span>
+          </div>
+          <div class="digitise-item">
+            <span class="digitise-check">✓</span>
+            <span class="digitise-label">Digitise attendance</span>
+          </div>
+          <div class="digitise-item">
+            <span class="digitise-check">✓</span>
+            <span class="digitise-label">Automate fees</span>
+          </div>
+          <div class="digitise-item">
+            <span class="digitise-check">✓</span>
+            <span class="digitise-label">Publish report cards</span>
+          </div>
+          <div class="digitise-item">
+            <span class="digitise-check">✓</span>
+            <span class="digitise-label">Send notifications</span>
+          </div>
+          <div class="digitise-item">
+            <span class="digitise-check">✓</span>
+            <span class="digitise-label">Manage examinations digitally</span>
+          </div>
+        </div>
+
+        <p class="text-note animate-in d4">
+          ERP systems have helped schools accomplish much of this.
+        </p>
+      </div>
+      <div class="slide-num slide-num-dk">03</div>
+    </section>
+
+    <!-- SLIDE 4: THE CHASM -->
+    <section class="slide slide-deodar" id="slide-4" data-slide="4">
+      <div class="slide-content left-content">
+        <div class="eyebrow animate-in d1">The Digital Illusion</div>
+        <h2 class="headline-lg animate-in d2">But digitising a process does not necessarily<br /><em>make the institution smarter.</em></h2>
+
+        <div class="chasm-split animate-in d3">
+          <div class="chasm-left">
+            <p>A school can have an excellent ERP and still struggle with:</p>
+            <ul class="bullet-list-rust">
+              <li>Fragmented information &amp; disconnected departments</li>
+              <li>Manual decision-making &amp; duplicated data</li>
+              <li>Paper dependency &amp; limited visibility into daily events</li>
+            </ul>
+          </div>
+          <div class="chasm-right">
+            <p class="alert-box">
+              🚨 <strong>Vulnerability Warning:</strong> When critical information is dependent on individual devices, physical records, or disconnected systems, the school remains vulnerable to operational and data loss.
+            </p>
+          </div>
+        </div>
+
+        <div class="highlight-bar-rust animate-in d4">
+          The next stage of digital transformation therefore cannot simply be more software. <span class="highlight-saffron">It has to be better intelligence.</span>
+        </div>
+      </div>
+      <div class="slide-num">04</div>
+    </section>
+
+    <!-- SLIDE 5: BEYOND ERP -->
+    <section class="slide slide-warm" id="slide-5" data-slide="5">
+      <div class="slide-content split-content">
+        <div class="split-l animate-in d1">
+          <div class="eyebrow eyebrow-dk">What Comes After ERP?</div>
+          <h2 class="headline-lg headline-dk">Moving Beyond the traditional ERP model</h2>
+          <p class="normal-desc-dk">
+            The next generation of school technology should not be about replacing one ERP with another. An intelligent School Operating System should connect the entire institution as one connected ecosystem.
+          </p>
+          <div class="ecosystem-box">
+            <span class="eco-badge">Leadership</span>
+            <span class="eco-badge">Administration</span>
+            <span class="eco-badge">Teachers</span>
+            <span class="eco-badge">Students</span>
+            <span class="eco-badge">Parents</span>
+            <span class="eco-badge">Operations</span>
+            <span class="eco-badge">Data</span>
+            <span class="eco-badge">AI</span>
+          </div>
+        </div>
+        <div class="split-r animate-in d2">
+          <div class="quote-card-wool">
+            <p class="quote-text-deodar">
+              "Because a school is not a collection of departments. It is a living institution where thousands of decisions, interactions, observations, and experiences happen every day. Technology should understand that complexity."
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-num slide-num-dk">05</div>
+    </section>
+
+    <!-- SLIDE 6: AUTOMATION VS INTELLIGENCE -->
+    <section class="slide slide-deodar" id="slide-6" data-slide="6">
+      <div class="slide-content center-content">
+        <div class="eyebrow animate-in d1">The Real Distinction</div>
+        <h2 class="headline-lg animate-in d2">Automation Is Not <em>Intelligence</em></h2>
+
+        <div class="comparison-grid animate-in d3">
+          <div class="comp-col comp-left">
+            <div class="comp-header">⚙️ Automation asks:</div>
+            <div class="comp-body">
+              <p class="comp-question">“How can we make this process happen automatically?”</p>
+              <div class="comp-divider"></div>
+              <p class="comp-example">A system automatically generates an attendance report.</p>
+            </div>
+          </div>
+          <div class="comp-col comp-right">
+            <div class="comp-header">✨ Intelligence asks:</div>
+            <div class="comp-body">
+              <p class="comp-question">“Why is this happening, what does it mean, and what should we do next?”</p>
+              <div class="comp-divider"></div>
+              <p class="comp-example highlight-example">Identify meaningful patterns in attendance and connect them with other relevant signals that require attention.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="deep-questions-box animate-in d4">
+          <p class="dq-intro">Putting “AI” on a school management platform does not make the platform intelligent. The real question is: <strong>What does the system understand?</strong></p>
+          <div class="dq-grid">
+            <span>Does it understand the teacher?</span>
+            <span>Does it understand the parent?</span>
+            <span>Does it understand the student?</span>
+            <span>Does it understand the institution?</span>
+            <span>Does it understand context?</span>
+          </div>
+          <p class="dq-outro">Can it help people make better decisions while keeping human judgement at the centre?</p>
+        </div>
+      </div>
+      <div class="slide-num">06</div>
+    </section>
+
+    <!-- SLIDE 7: A STUDENT IS MORE THAN A REPORT CARD -->
+    <section class="slide slide-wool" id="slide-7" data-slide="7">
+      <div class="slide-content" style="overflow-y:auto; max-height:100vh; padding: 25px 40px;">
+        <div class="eyebrow eyebrow-dk animate-in d1">The Rich Story of Development</div>
+        <h2 class="headline-lg headline-dk animate-in d2">A Student Is More Than <em>a Report Card</em></h2>
+
+        <div class="dashboard-vs-intelligence animate-in d3">
+          <div class="dvi-block block-old">
+            <h3>📊 Traditional Dashboard</h3>
+            <p>Tells us what has already happened:</p>
+            <div class="dvi-chips">
+              <span>Attendance</span>
+              <span>Marks</span>
+              <span>Fees</span>
+              <span>Examinations</span>
+              <span>Discipline</span>
+            </div>
+          </div>
+          <div class="dvi-block block-new">
+            <h3>🌱 Holistic Development Signals</h3>
+            <p>Collectively tell a much richer story:</p>
+            <div class="dvi-chips-new">
+              <span>Learning outcomes</span>
+              <span>Participation</span>
+              <span>Projects</span>
+              <span>Classroom observations</span>
+              <span>Interests</span>
+              <span>Behaviour</span>
+              <span>Attendance patterns</span>
+              <span>Activities</span>
+              <span>Achievements</span>
+              <span>Interventions</span>
+              <span>Teacher feedback</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenarios-container animate-in d4">
+          <div class="scenario-item">
+            <span class="sc-icon">⚠️</span>
+            <p>A student may be performing well academically while becoming increasingly disengaged.</p>
+          </div>
+          <div class="scenario-item">
+            <span class="sc-icon">💡</span>
+            <p>Another may have average marks but demonstrate exceptional leadership, creativity, or problem-solving.</p>
+          </div>
+          <div class="scenario-item">
+            <span class="sc-icon">🔄</span>
+            <p>Another may suddenly show changes in attendance, participation, or classroom behaviour.</p>
+          </div>
+        </div>
+
+        <div class="intel-summary animate-in d5">
+          <p><strong>Intelligence begins</strong> when the institution can understand the relationship between these signals. The goal is not to predict a child's future with certainty. The goal is to give educators better context, earlier visibility, and better tools for human intervention.</p>
+        </div>
+      </div>
+      <div class="slide-num slide-num-dk">07</div>
+    </section>
+
+    <!-- SLIDE 8: A PRINCIPAL CANNOT BE EVERYWHERE -->
+    <section class="slide slide-deodar" id="slide-8" data-slide="8">
+      <div class="slide-content split-content">
+        <div class="split-l animate-in d1">
+          <div class="eyebrow">Connected View of the School</div>
+          <h2 class="headline-lg">A Principal<br /><em>Cannot Be Everywhere</em></h2>
+          <p class="normal-desc">
+            A school may have 2,000 students. Or 10,000. No Principal, teacher, counsellor, or administrator can physically observe every student, every interaction, every day.
+          </p>
+          <div class="strengthen-box">
+            <span class="str-icon">✨</span>
+            <p>But an intelligent institutional system can provide leadership with a connected view of what is happening across the school. Not to replace human presence. <strong>To strengthen it.</strong></p>
+          </div>
+        </div>
+        <div class="split-r animate-in d2">
+          <div class="attention-ladder">
+            <div class="ladder-step l3">
+              <span class="step-badge-saffron">Future Focus</span>
+              <p class="step-headline">“What deserves our attention next?”</p>
+            </div>
+            <div class="ladder-arrow">↑</div>
+            <div class="ladder-step l2">
+              <span class="step-badge-wool">Present Focus</span>
+              <p class="step-headline">“What is happening?”</p>
+            </div>
+            <div class="ladder-arrow">↑</div>
+            <div class="ladder-step l1">
+              <span class="step-badge-rust">Past Focus</span>
+              <p class="step-headline">“What happened?”</p>
+            </div>
+          </div>
+          <p class="ladder-caption">Moving your leadership from retrospective reports to proactive intelligence.</p>
+        </div>
+      </div>
+      <div class="slide-num">08</div>
+    </section>
+
+    <!-- SLIDE 9: THE PARENT EXPERIENCE MATTERS -->
+    <section class="slide slide-warm" id="slide-9" data-slide="9">
+      <div class="slide-content left-content" style="overflow-y:auto; max-height:100vh; padding: 25px 40px;">
+        <div class="eyebrow eyebrow-dk animate-in d1">Dignified Interactions</div>
+        <h2 class="headline-lg headline-dk animate-in d2">The Parent Experience <em>Matters</em></h2>
+
+        <div class="parent-compare animate-in d3">
+          <div class="p-comp-card">
+            <h3>📱 The Digital World Outside</h3>
+            <p>Parents book flights from their phones, track deliveries in real time, communicate instantly, and receive personalised services everywhere. Their expectations from institutions are changing too.</p>
+          </div>
+          <div class="p-comp-card p-red">
+            <h3>📄 The School-Parent Reality</h3>
+            <p>Yet the school-parent experience can still involve paper forms, phone calls, fragmented communication, waiting, repeated information, and uncertainty.</p>
+          </div>
+        </div>
+
+        <div class="future-questions-grid animate-in d4">
+          <div class="fq-intro-text">
+            <p>A future-ready school must ask itself five simple questions about parent touchpoints:</p>
+          </div>
+          <div class="fq-box">
+            <div class="fq-item"><span>1</span> Is the experience simple?</div>
+            <div class="fq-item"><span>2</span> Is it transparent?</div>
+            <div class="fq-item"><span>3</span> Is it responsive?</div>
+            <div class="fq-item"><span>4</span> Is it secure?</div>
+            <div class="fq-item highlight-fq"><span>5</span> Does it feel dignified?</div>
+          </div>
+        </div>
+
+        <div class="parent-takeaway animate-in d5">
+          <p>"Technology should not make parents feel that they are interacting with a machine. It should make the institution feel more accessible, responsive and thoughtful."</p>
+        </div>
+      </div>
+      <div class="slide-num slide-num-dk">09</div>
+    </section>
+
+    <!-- SLIDE 10: WHAT DOES A TRULY SAFE CAMPUS LOOK LIKE? -->
+    <section class="slide slide-deodar" id="slide-10" data-slide="10">
+      <div class="slide-content" style="overflow-y:auto; max-height:100vh; padding: 25px 40px;">
+        <div class="eyebrow animate-in d1">Beyond Administration</div>
+        <h2 class="headline-lg animate-in d2">What Does a Truly Safe Campus <em>Look Like?</em></h2>
+
+        <div class="safety-grid animate-in d3">
+          <div class="safety-card">
+            <div class="safety-header">🩺 Scenario A: The Infirmary</div>
+            <div class="safety-body">
+              <p class="scen-text">A child suddenly becomes unwell.</p>
+              <ul class="scen-list">
+                <li>What information is immediately available to the medical staff?</li>
+                <li>What relevant health information has the school recorded?</li>
+                <li>Who needs to be informed, and how quickly can appropriate people respond?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="safety-card">
+            <div class="safety-header">🚪 Scenario B: The School Gate</div>
+            <div class="safety-body">
+              <p class="scen-text">A parent arrives at the school.</p>
+              <ul class="scen-list">
+                <li>How is their identity and purpose understood?</li>
+                <li>How are authorised people notified seamlessly?</li>
+                <li>How is data processed without compromising dignity?</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="safety-quote animate-in d4">
+          <p>
+            "These are not merely software features. They are part of the school's responsibility towards children and families. Technology should support that responsibility without compromising privacy, dignity or human judgement."
+          </p>
+        </div>
+      </div>
+      <div class="slide-num">10</div>
+    </section>
+
+    <!-- SLIDE 11: INTELLIGENCE MUST COME WITH RESPONSIBILITY -->
+    <section class="slide slide-wool" id="slide-11" data-slide="11">
+      <div class="slide-content" style="overflow-y:auto; max-height:100vh; padding: 25px 40px;">
+        <div class="eyebrow eyebrow-dk animate-in d1">Ethics and Trust</div>
+        <h2 class="headline-lg headline-dk animate-in d2">Intelligence Must Come <em>With Responsibility</em></h2>
+        <p class="normal-desc-dk animate-in d3">
+          AI in education cannot simply mean giving algorithms access to more student data. The more intelligent the system becomes, the more important responsible architecture becomes.
+        </p>
+
+        <div class="governance-grid animate-in d4">
+          <div class="gov-card">
+            <span class="gov-num">01</span>
+            <span class="gov-title">Ownership &amp; Access</span>
+            <p class="gov-desc">Who owns the data, and who can access it?</p>
+          </div>
+          <div class="gov-card">
+            <span class="gov-num">02</span>
+            <span class="gov-title">Data Protection</span>
+            <p class="gov-desc">How is student information protected, and where is it stored?</p>
+          </div>
+          <div class="gov-card">
+            <span class="gov-num">03</span>
+            <span class="gov-title">AI Governance</span>
+            <p class="gov-desc">How is AI used? When should AI assist, and when must a human decide?</p>
+          </div>
+          <div class="gov-card">
+            <span class="gov-num">04</span>
+            <span class="gov-title">Trust &amp; Decisions</span>
+            <p class="gov-desc">How are sensitive decisions governed? Can the institution trust the system?</p>
+          </div>
+        </div>
+
+        <div class="responsibility-bar animate-in d5">
+          <p class="resp-text">
+            An intelligent school is not one that gives every decision to AI. <strong>It is one that knows where AI should assist and where human judgement must remain supreme.</strong>
+          </p>
+        </div>
+      </div>
+      <div class="slide-num slide-num-dk">11</div>
+    </section>
+
+    <!-- SLIDE 12: THE NEXT THREE YEARS MATTER / THE FUTURE-READY SCHOOL -->
+    <section class="slide slide-deodar" id="slide-12" data-slide="12">
+      <div class="slide-content center-content" style="overflow-y:auto; max-height:100vh; padding: 20px 40px;">
+        <div class="eyebrow animate-in d1">The Road Ahead</div>
+        <h2 class="headline-lg animate-in d2">The Next Three Years <em>Matter</em></h2>
+
+        <p class="vision-intro animate-in d3">
+          Every school has a vision: to improve learning outcomes, strengthen parent engagement, build a stronger brand, improve student wellbeing, expand, or become a future-ready institution.
+        </p>
+
+        <div class="questions-flow animate-in d4">
+          <p class="qf-header">What technology is helping turn that vision into measurable outcomes?</p>
+          <div class="qf-versus">
+            <div class="qfv-col">
+              <span class="qfv-label">Not:</span>
+              <p class="qfv-text">“Which ERP are we using?”</p>
+            </div>
+            <div class="qfv-center">vs</div>
+            <div class="qfv-col qfv-highlight">
+              <span class="qfv-label">But:</span>
+              <p class="qfv-text">“What are we still unable to see, understand, or solve?”</p>
+            </div>
+          </div>
+          <div class="qf-bullets">
+            <span>Where is info trapped?</span>
+            <span>What depends on manual work?</span>
+            <span>What do parents expect?</span>
+            <span>What does leadership need to know early?</span>
+            <span>What will we need 3 years from now?</span>
+          </div>
+        </div>
+
+        <div class="transformation-journey animate-in d5">
+          <p class="tj-title">The Real Transition</p>
+          <div class="tj-flow">
+            <span class="tj-step">Data</span>
+            <span class="tj-arrow">→</span>
+            <span class="tj-step">Understanding</span>
+            <span class="tj-arrow">→</span>
+            <span class="tj-step">Intelligence</span>
+            <span class="tj-arrow">→</span>
+            <span class="tj-step-highlight">Better Decisions</span>
+          </div>
+          <p class="tj-footer">
+            "Because the purpose of technology in education should never be technology itself. It should be to help schools understand their students better, support their teachers better, engage their parents better, operate more responsibly, and make better decisions."
+          </p>
+          <p class="tj-final-question">
+            The question is no longer whether a school should become digital. The question is whether it is ready to become intelligent.
+          </p>
+        </div>
+      </div>
+      <div class="slide-num">12</div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
